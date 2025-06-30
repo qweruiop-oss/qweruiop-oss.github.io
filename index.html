@@ -1,9 +1,157 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #333;
+            --bg-color: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .subtitle {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            background: #f1f5f9;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 40px 0;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
 
 <body>
-    <h1>Hello World</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+    <header>
+        <div class="container">
+            <h1>qweruiop-oss</h1>
+            <p class="subtitle">开发者 / 创造者 / 学习者</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="about">
+            <h2>关于我</h2>
+            <p>
+                我是一名热爱技术，持续学习的开发者。
+                目前专注于Web开发和开源项目。
+                热衷于探索新的技术领域，并将其应用于实际项目中。
+                希望通过技术创新，为世界带来更多积极的影响。
+            </p>
+        </section>
+
+        <section class="projects">
+            <h2>项目展示</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>项目一</h3>
+                    <p>项目描述...</p>
+                </div>
+                <div class="project-card">
+                    <h3>项目二</h3>
+                    <p>项目描述...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>联系方式</h2>
+            <div class="social-links">
+                <a href="https://github.com/qweruiop-oss">GitHub</a>
+                <a href="mailto:gbgbgbb3333@outlook.com">Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 qweruiop-oss. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
