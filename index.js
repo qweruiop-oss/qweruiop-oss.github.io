@@ -22,13 +22,3 @@ function reveal() {
 
 window.addEventListener('scroll', reveal);
 
-function toggleEmail(event) {
-    event.preventDefault();
-    const emailBtn = event.currentTarget;
-    emailBtn.classList.toggle('flipped');
-
-    // 5秒后自动翻转回来
-    setTimeout(() => {
-        emailBtn.classList.remove('flipped');
-    }, 5000);
-}
