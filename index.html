@@ -4,12 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 助手</title>
+    <title>qweruiop-oss的个人主页</title>
     <style>
         :root {
             --primary-color: #2563eb;
             --text-color: #333;
             --bg-color: #fff;
+            --gradient-start: #2563eb;
+            --gradient-middle: #4f46e5;
+            --gradient-end: #7c3aed;
         }
 
         * {
@@ -23,17 +26,32 @@
             font-family: 'JetBrains Mono', monospace;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--bg-color);
+            background: linear-gradient(135deg,
+                    var(--gradient-start) 0%,
+                    var(--gradient-middle) 50%,
+                    var(--gradient-end) 100%);
+            min-height: 100vh;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 20px auto;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            background: linear-gradient(135deg,
+                    var(--gradient-start),
+                    var(--gradient-middle),
+                    var(--gradient-end));
+            margin: -1px;
+            /* 修复边缘间隙 */
+            border-radius: 10px 10px 0 0;
             color: white;
             padding: 80px 0;
             text-align: center;
@@ -41,6 +59,7 @@
 
         h1 {
             animation: fadeIn 1s ease-out;
+            color: #333;
         }
 
         .subtitle {
@@ -59,6 +78,13 @@
             color: var(--primary-color);
         }
 
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            color: var(--text-color);
+            animation: fadeIn 1s ease-out;
+        }
+
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -66,7 +92,8 @@
         }
 
         .project-card {
-            background: #f8fafc;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -82,6 +109,7 @@
             display: flex;
             gap: 20px;
             justify-content: center;
+            align-items: center;
         }
 
         .social-links a {
@@ -99,7 +127,9 @@
         }
 
         footer {
-            background: #f1f5f9;
+            background: rgba(241, 245, 249, 0.9);
+            border-radius: 0 0 10px 10px;
+            backdrop-filter: blur(10px);
             padding: 20px 0;
             text-align: center;
         }
@@ -154,80 +184,6 @@
                 padding: 40px 0;
             }
         }
-
-        .email-container {
-            position: relative;
-            display: inline-block;
-            perspective: 1000px;
-        }
-
-        .email-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 200px 20px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            overflow: hidden;
-            transition: background 0.3s;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-
-        .email-btn:hover {
-            background: #1d4ed8;
-        }
-
-        .email-btn .back {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #1d4ed8;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: translateY(100%);
-            transition: transform 0.3s;
-        }
-
-        .email-container:hover .back {
-            transform: translateY(0);
-        }
-
-        .email-container:hover .front {
-            transform: translateY(-100%);
-        }
-
-        .email-btn .front,
-        .email-btn .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-        }
-
-        .email-btn .back {
-            transform: rotateX(180deg);
-            opacity: 0;
-        }
-
-        .email-btn.flipped {
-            transform: rotateX(180deg);
-        }
-
-        .email-btn.flipped .front {
-            opacity: 0;
-        }
-
-        .email-btn.flipped .back {
-            opacity: 1;
-        }
     </style>
 </head>
 
@@ -268,12 +224,6 @@
             <h2>联系方式</h2>
             <div class="social-links">
                 <a href="https://github.com/qweruiop-oss">GitHub</a>
-                <div class="email-container">
-                    <a href="#" class="email-btn" onclick="toggleEmail(event)">
-                        <span class="front">Email</span>
-                        <span class="back">gbgbgbb3333@outlook.com</span>
-                    </a>
-                </div>
             </div>
         </section>
     </main>
