@@ -1,0 +1,63 @@
+const carGrid = document.querySelector('.car-grid');
+const resultCount = document.querySelector('.result-count');
+const sideFilters = document.querySelectorAll('.side-filter');
+const energyFilters = document.querySelectorAll('.sidebar-group input');
+const favoriteButton = document.querySelector('.favorite-link');
+const favoriteCount = favoriteButton.querySelector('small');
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.main-nav');
+const modal = document.querySelector('.details-modal');
+const modalTitle = modal.querySelector('h2');
+let favorites = 0;
+
+const brands = [['BMW', ['i5', 'iX', 'X5', '3系', '7系', 'X3', 'M4', 'i4', 'X7', '5系']], ['PORSCHE', ['Macan', 'Cayenne', '911 Carrera', 'Taycan', 'Panamera', '718 Cayman', '718 Boxster', 'Macan GTS', '911 Targa', 'Cayenne Coupe']], ['TOYOTA', ['凯美瑞', '汉兰达', '赛那', 'RAV4荣放', '皇冠陆放', '亚洲龙', '雷凌', 'bZ4X', '普拉多', '格瑞维亚']], ['TESLA', ['Model 3', 'Model Y', 'Model S', 'Model X', 'Model 3 Performance', 'Model Y 长续航', 'Model S Plaid', 'Cybertruck', 'Roadster', 'Model Y Performance']], ['AUDI', ['A4L', 'A6L', 'Q5L', 'Q3', 'Q7', 'e-tron GT', 'Q4 e-tron', 'A7L', 'RS 5', 'A8L']], ['MERCEDES', ['C级', 'E级', 'S级', 'GLC', 'GLE', 'EQE', 'EQS', 'A级', 'GLB', 'AMG GT']], ['VOLVO', ['S90', 'XC60', 'XC90', 'EX30', 'EX90', 'EM90', 'S60', 'C40', 'XC40', 'V90']], ['LEXUS', ['ES', 'RX', 'NX', 'LM', 'LS', 'RZ', 'UX', 'LX', 'LC', 'IS']], ['BYD', ['汉', '海豹', '宋PLUS', '唐', '方程豹5', '腾势N7', '腾势D9', '仰望U8', '秦PLUS', '元PLUS']], ['VOLKSWAGEN', ['迈腾', '帕萨特', '途观L', 'ID.4', 'ID.6', '揽巡', '途昂', '高尔夫', '凌渡', '威然']]];
+const bodyTypes = ['sedan', 'suv', 'sedan', 'sedan', 'suv', 'mpv', 'coupe', 'sedan', 'suv', 'sedan'];
+const energyTypes = ['fuel', 'electric', 'hybrid', 'electric', 'fuel', 'hybrid', 'electric', 'fuel', 'electric', 'hybrid'];
+const visualClasses = ['ioniq', 'defender', 'bmw', 'macan'];
+const cars = brands.flatMap(([brand, models], brandIndex) => models.map((model, modelIndex) => ({ brand, name: `${brand} ${model}`, type: bodyTypes[modelIndex], energy: energyTypes[modelIndex], price: (18 + brandIndex * 5 + modelIndex * 2.38).toFixed(2), visual: visualClasses[(brandIndex + modelIndex) % visualClasses.length] })));
+carGrid.innerHTML = cars.map((car, index) => `<article class="car-card" data-type="${car.type}" data-energy="${car.energy}" data-brand="${car.brand}" data-name="${car.name}"><div class="car-visual ${car.visual}"><span class="card-index">${String(index + 1).padStart(2, '0')} / 100</span><button class="heart" type="button" aria-label="收藏 ${car.name}">♡</button><div class="car-image"></div></div><div class="car-info"><div><p class="car-type">${car.energy === 'electric' ? '纯电动' : car.energy === 'hybrid' ? '混合动力' : '燃油'} · 2024</p><h3>${car.name}</h3></div><strong>¥ ${car.price}<span>万起</span></strong></div><button class="text-link details-button" type="button">查看详情 <span>↗</span></button></article>`).join('');
+const cards = document.querySelectorAll('.car-card');
+
+sideFilters.forEach((filter) => {
+  filter.addEventListener('click', () => {
+    sideFilters.forEach((item) => item.classList.remove('active'));
+    filter.classList.add('active');
+    updateCatalog();
+  });
+});
+
+energyFilters.forEach((filter) => filter.addEventListener('change', updateCatalog));
+document.querySelector('.reset-filters').addEventListener('click', () => { sideFilters.forEach((filter) => filter.classList.toggle('active', filter.dataset.filter === 'all')); energyFilters.forEach((filter) => { filter.checked = false; }); updateCatalog(); });
+function updateCatalog() { const bodyType = document.querySelector('.side-filter.active').dataset.filter; const selectedEnergy = [...energyFilters].filter((filter) => filter.checked).map((filter) => filter.value); let visible = 0; cards.forEach((card) => { const matchesBody = bodyType === 'all' || card.dataset.type === bodyType; const matchesEnergy = !selectedEnergy.length || selectedEnergy.includes(card.dataset.energy) || selectedEnergy.includes(card.dataset.brand); const isVisible = matchesBody && matchesEnergy; card.classList.toggle('hidden', !isVisible); if (isVisible) visible += 1; }); resultCount.textContent = `${visible} 款车型`; }
+
+document.querySelectorAll('.heart').forEach((heart) => {
+  heart.addEventListener('click', () => {
+    heart.classList.toggle('saved');
+    heart.textContent = heart.classList.contains('saved') ? '♥' : '♡';
+    favorites += heart.classList.contains('saved') ? 1 : -1;
+    favoriteCount.textContent = favorites;
+    favoriteCount.style.display = favorites ? 'flex' : 'none';
+  });
+});
+
+document.querySelectorAll('.details-button').forEach((button) => {
+  button.addEventListener('click', () => {
+    modalTitle.textContent = button.closest('.car-card').dataset.name;
+    modal.showModal();
+  });
+});
+
+modal.querySelector('.modal-close').addEventListener('click', () => modal.close());
+modal.addEventListener('click', (event) => {
+  if (event.target === modal) modal.close();
+});
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+});
+
+nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+  nav.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+}));

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AURA MOTORS 汽车博览：发现下一台让你心动的汽车。">
+  <title>AURA MOTORS | 汽车博览</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="AURA MOTORS 首页"><span>AURA</span><b>/</b><em>MOTORS</em></a>
+    <nav class="main-nav" aria-label="主导航"><a href="#showroom">车型展厅</a><a href="#stories">品牌故事</a><a href="#visit">预约试驾</a></nav>
+    <div class="header-actions"><button class="icon-button favorite-link" type="button" aria-label="查看收藏车型"><span>♡</span><small>0</small></button><button class="menu-toggle" type="button" aria-label="打开菜单" aria-expanded="false"><i></i><i></i></button></div>
+  </header>
+  <main id="top">
+    <section class="hero"><div class="hero-image"></div><div class="hero-shade"></div><div class="hero-content"><p class="eyebrow light"><span class="live-dot"></span> 2024 / 2025 新车季</p><h1>把想象<br><i>开</i>出去。</h1><div class="hero-bottom"><p>探索改变出行方式的设计、性能与灵感。<br>在这里，找到真正属于你的下一程。</p><a class="circle-arrow" href="#showroom" aria-label="探索车型">↘</a></div></div><div class="hero-meta"><span>SCROLL TO EXPLORE</span><span>01 / 04</span></div></section>
+    <section class="showroom section-wrap" id="showroom"><div class="section-heading"><div><p class="eyebrow">完整车型库 / 01</p><h2>100 款，<i>找到</i>你的车。</h2></div><p class="section-note">从城市通勤到旷野远行，<br>按你的生活方式挑选。</p></div>
+      <div class="catalog-layout">
+        <aside class="catalog-sidebar" aria-label="车型筛选"><div class="sidebar-top"><span>FILTERS</span><button class="reset-filters" type="button">重置</button></div><div class="sidebar-group"><p>车身类型</p><button class="side-filter active" data-filter="all">全部车型 <span>100</span></button><button class="side-filter" data-filter="suv">SUV <span>30</span></button><button class="side-filter" data-filter="sedan">轿车 <span>50</span></button><button class="side-filter" data-filter="mpv">MPV <span>10</span></button><button class="side-filter" data-filter="coupe">轿跑 <span>10</span></button></div><div class="sidebar-group"><p>能源类型</p><label><input type="checkbox" value="electric">纯电动 <span>30</span></label><label><input type="checkbox" value="hybrid">混合动力 <span>30</span></label><label><input type="checkbox" value="fuel">燃油 <span>40</span></label></div><div class="sidebar-group"><p>品牌精选</p><label><input type="checkbox" value="BMW">BMW</label><label><input type="checkbox" value="PORSCHE">Porsche</label><label><input type="checkbox" value="TOYOTA">Toyota</label><label><input type="checkbox" value="TESLA">Tesla</label></div></aside>
+        <div class="catalog-results"><div class="results-toolbar"><span class="result-count">100 款车型</span><select aria-label="排序方式"><option>推荐排序</option><option>价格从低到高</option><option>价格从高到低</option></select></div><div class="car-grid"></div></div>
+      </div>
+    </section>
+    <section class="manifesto" id="stories"><div class="manifesto-art"><div class="art-line"></div><span>DESIGN<br>IS A JOURNEY</span></div><div class="manifesto-copy"><p class="eyebrow">我们的态度 / 02</p><h2>不是拥有一台车，<br>是拥有一种<br><i>前进的方式。</i></h2><a class="text-link" href="#visit">了解 AURA MOTORS <span>↗</span></a></div></section>
+    <section class="visit section-wrap" id="visit"><div><p class="eyebrow">线下体验 / 03</p><h2>来现场，<br><i>感受</i>真实。</h2></div><div class="visit-card"><p>预约你的专属试驾</p><span>把喜欢，从屏幕里开出来。</span><a class="button" href="mailto:hello@auramotors.cn">预约试驾 <b>↗</b></a></div></section>
+  </main>
+  <footer><a class="brand" href="#top"><span>AURA</span><b>/</b><em>MOTORS</em></a><p>© 2024 AURA MOTORS. FIND YOUR NEXT.</p><a href="#top" class="back-top">返回顶部 ↑</a></footer>
+  <dialog class="details-modal"><button class="modal-close" aria-label="关闭详情">×</button><p class="eyebrow">MODEL SPOTLIGHT</p><h2></h2><p class="modal-description">让每一次出发都更接近你心中的理想。预约专属顾问，获取完整配置与试驾信息。</p><a class="button" href="#visit">预约试驾 <b>↗</b></a></dialog>
+  <script src="script.js"></script>
+</body>
+</html>
