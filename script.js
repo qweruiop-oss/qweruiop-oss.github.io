@@ -23,7 +23,18 @@ const visualClasses = ['ioniq', 'defender', 'bmw', 'macan'];
 const cars = brands.flatMap(([brand, models], brandIndex) => models.map((model, modelIndex) => ({ brand, name: `${brand} ${model}`, type: bodyTypes[modelIndex], energy: energyTypes[modelIndex], price: (18 + brandIndex * 5 + modelIndex * 2.38).toFixed(2), visual: visualClasses[(brandIndex + modelIndex) % visualClasses.length] })));
 carGrid.innerHTML = cars.map((car, index) => `<article class="car-card" data-type="${car.type}" data-energy="${car.energy}" data-brand="${car.brand}" data-name="${car.name}"><div class="car-visual ${car.visual}"><span class="card-index">${String(index + 1).padStart(2, '0')} / 100</span><button class="heart" type="button" aria-label="收藏 ${car.name}">♡</button><div class="car-image"></div></div><div class="car-info"><div><p class="car-type">${car.energy === 'electric' ? '纯电动' : car.energy === 'hybrid' ? '混合动力' : '燃油'} · 2024</p><h3>${car.name}</h3></div><strong>¥ ${car.price}<span>万起</span></strong></div><button class="text-link details-button" type="button">查看详情 <span>↗</span></button></article>`).join('');
 const cards = document.querySelectorAll('.car-card');
+cards.forEach((card, index) => card.style.setProperty('--delay', index));
 let activeFlippedCard = null;
+
+const animatedSections = document.querySelectorAll('.hero-content, .section-heading, .visit-intro, .test-drive-form, .manifesto-copy, .catalog-layout');
+animatedSections.forEach((section, index) => {
+  section.classList.add('reveal');
+  section.style.setProperty('--delay', index);
+});
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.site-header');
+  if (header) header.classList.toggle('scrolled', window.scrollY > 12);
+});
 
 function openDetails(card) {
   modalTitle.textContent = card.dataset.name;
