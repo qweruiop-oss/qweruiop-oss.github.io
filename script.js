@@ -100,7 +100,9 @@ testDriveForm.addEventListener('submit', async (event) => {
       body: JSON.stringify(booking)
     });
     if (!response.ok) throw new Error('history request failed');
-    formStatus.textContent = `预约已提交，顾问会尽快联系你确认 ${booking.model} 的试驾安排。`;
+    const subject = encodeURIComponent(`AURA MOTORS 试驾预约：${booking.model}`);
+    const body = encodeURIComponent(`车型：${booking.model}\n门店：${booking.store}\n日期：${booking.date}\n时段：${booking.time}\n姓名：${booking.name}\n电话：${booking.phone}`);
+    formStatus.innerHTML = `预约已提交，顾问会尽快联系你确认 ${booking.model} 的试驾安排。<a class="reservation-mail-link" href="mailto:${supabase.reservationEmail}?subject=${subject}&body=${body}">发送预约邮件</a>`;
   } catch (error) {
     const localHistory = JSON.parse(localStorage.getItem('testDriveHistory') || '[]');
     localHistory.push({ ...booking, createdAt: new Date().toISOString() });
