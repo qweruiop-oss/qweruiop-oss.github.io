@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AURA MOTORS 管理员预约管理后台。">
-  <title>AURA MOTORS | 管理后台</title>
+  <meta name="description" content="AURA MOTORS 管理员登录。">
+  <title>AURA MOTORS | 管理员登录</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -15,26 +15,19 @@
 <body>
   <header class="admin-header">
     <a class="brand" href="./"><span>AURA</span><b>/</b><em>MOTORS</em></a>
-    <div class="admin-user"><span class="status-dot"></span><span>管理员模式</span><a href="./">返回前台 ↗</a></div>
+    <div class="admin-user"><span class="status-dot"></span><span>管理员登录</span><a href="./">返回前台 ↗</a></div>
   </header>
   <main class="admin-main">
-    <div class="page-heading">
-      <div><p class="eyebrow">OPERATIONS / 01</p><h1>预约管理</h1></div>
-      <div class="admin-actions"><button class="refresh-button" type="button" aria-label="刷新预约记录"><span>↻</span> 刷新数据</button><button class="sign-out-button" type="button" hidden>退出登录</button></div>
-    </div>
-    <form class="login-panel" hidden><p class="eyebrow">ADMIN ACCESS</p><h2>管理员登录</h2><div class="login-fields"><input name="email" type="email" placeholder="管理员邮箱" autocomplete="username" required><input name="password" type="password" placeholder="密码" autocomplete="current-password" required><button class="login-button" type="submit">登录 ↗</button></div><p class="login-status" role="alert"></p></form>
-    <section class="stats" aria-label="预约统计">
-      <article class="stat-card"><span>全部预约</span><strong id="total-count">0</strong><small>HISTORY TOTAL</small></article>
-      <article class="stat-card"><span>今日预约</span><strong id="today-count">0</strong><small>BOOKED TODAY</small></article>
-      <article class="stat-card"><span>待到店</span><strong id="upcoming-count">0</strong><small>UPCOMING VISITS</small></article>
-      <article class="stat-card accent"><span>热门车型</span><strong id="popular-model">—</strong><small>MOST REQUESTED</small></article>
-    </section>
-    <section class="records-panel">
-      <div class="panel-heading"><div><p class="eyebrow">TEST DRIVE REQUESTS</p><h2>预约记录</h2></div><span id="record-state" class="record-state">正在加载</span></div>
-      <div class="toolbar"><label class="search-field"><span>⌕</span><input id="search-input" type="search" placeholder="搜索姓名、车型或手机号" aria-label="搜索预约记录"></label><label class="date-field"><span>预约日期</span><input id="date-filter" type="date" aria-label="按预约日期筛选"></label><button id="clear-filter" class="clear-button" type="button">清除筛选</button></div>
-      <div class="table-wrap"><table><thead><tr><th>客户</th><th>车型</th><th>体验门店</th><th>预约时间</th><th>提交时间</th></tr></thead><tbody id="records-body"></tbody></table><div id="empty-state" class="empty-state" hidden><strong>暂时没有匹配的预约</strong><span>新预约提交后会自动出现在这里。</span></div></div>
+    <section class="login-page-panel">
+      <p class="eyebrow">ADMIN ACCESS</p>
+      <h1>管理员登录</h1>
+      <p class="login-description">登录后进入预约管理 dashboard。</p>
+      <form class="login-panel">
+        <div class="login-fields"><input name="email" type="email" placeholder="管理员邮箱" autocomplete="username" required><input name="password" type="password" placeholder="密码" autocomplete="current-password" required><button class="login-button" type="submit">登录 ↗</button></div>
+        <p class="login-status" role="alert"></p>
+      </form>
     </section>
   </main>
-  <footer><span>AURA MOTORS / INTERNAL</span><span id="last-updated">尚未同步</span></footer>
+  <footer><span>AURA MOTORS / INTERNAL</span><span>SECURE ACCESS</span></footer>
 </body>
 </html>

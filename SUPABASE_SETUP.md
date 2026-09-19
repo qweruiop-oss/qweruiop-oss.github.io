@@ -6,7 +6,7 @@
 
 ## 2. 创建管理员账号
 
-在 Authentication > Users 中创建管理员邮箱和密码。管理员页面使用这个账号登录。
+在 Authentication > Users 中创建管理员邮箱和密码。请将管理员密码设置为你提供的密码，管理员页面使用这个账号登录。密码只保存在 Supabase Auth 中，不写入前端源码。
 
 ## 3. 填写前端配置
 
@@ -27,8 +27,12 @@ window.SUPABASE_CONFIG = {
 
 `https://你的用户名.github.io/仓库名/`
 
-管理员地址为：
+管理员登录地址为：
 
 `https://你的用户名.github.io/仓库名/admin.html`
+
+登录成功后会自动进入独立的 dashboard：
+
+`https://你的用户名.github.io/仓库名/dashboard.html`
 
 GitHub Pages 不运行 `server.js`。配置 Supabase 后，预约会直接写入 `test_drive_history` 表，管理员登录后可查看记录。
